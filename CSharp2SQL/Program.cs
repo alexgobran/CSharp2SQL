@@ -19,6 +19,7 @@ namespace CSharp2SQL {
             Users._Connection = conn;
             var userLogin = Users.Login("sa", "sa");
             Console.WriteLine(userLogin);
+
             var userFailedLogin = Users.Login("xx", "xx");
             Console.WriteLine(userFailedLogin?.ToString()?? "not found");
             var users = Users.GetAll();
