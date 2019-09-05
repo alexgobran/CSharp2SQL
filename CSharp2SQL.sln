@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2SQL", "CSharp2SQL\CSharp2SQL.csproj", "{970357A9-76D2-4F6A-BD5D-1880B3467355}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharp2SQLlibrary", "CSharp2SQLlibrary\CSharp2SQLlibrary.csproj", "{2D47C977-4610-4DF5-BB83-076898A9A97B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{970357A9-76D2-4F6A-BD5D-1880B3467355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{970357A9-76D2-4F6A-BD5D-1880B3467355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{970357A9-76D2-4F6A-BD5D-1880B3467355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{970357A9-76D2-4F6A-BD5D-1880B3467355}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D47C977-4610-4DF5-BB83-076898A9A97B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D47C977-4610-4DF5-BB83-076898A9A97B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D47C977-4610-4DF5-BB83-076898A9A97B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D47C977-4610-4DF5-BB83-076898A9A97B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5940D08F-C1EF-4AD6-9916-2AEE03DF578A}
+	EndGlobalSection
+EndGlobal
