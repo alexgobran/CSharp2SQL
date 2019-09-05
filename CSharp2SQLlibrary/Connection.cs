@@ -9,6 +9,7 @@ namespace CSharp2SQLlibrary {
         
         public SqlConnection _Connection { get; set; } = null;
 
+
         public void Open() {
             this._Connection.Open();
             if (this._Connection.State != System.Data.ConnectionState.Open)

@@ -27,9 +27,31 @@ namespace CSharp2SQL {
             {
                 Console.WriteLine(u);
             }
-            var user = Users.GetByPk(222);
+            var user = Users.GetByPk(2);
             Debug.WriteLine(user);
-            conn.Close();
+            var usernf = Users.GetByPk(222);
+            var success = Users.Delete(4);
+            var user3 = Users.GetByPk(3);
+            Debug.WriteLine(user3);
+
+           
+                var newuser = new Users();
+                newuser.Username = "ccc";
+                newuser.Password = "433";
+                newuser.FirstName = "Normal";
+                newuser.LastName = "Not";
+            newuser.Phone = "513-455-2231";
+            newuser.Email = "alee@gmail.com";
+            newuser.IsAdmin = false;
+                newuser.IsReviewer = true;
+                success = Users.Insert(newuser);
+
+            var userabc = Users.GetByPk(13);
+            userabc.FirstName = "The";
+            userabc.LastName = "King";
+                success = Users.Update(userabc);
+
+                conn.Close();
 
 
             var pgm = new Program();

@@ -9,6 +9,64 @@ namespace CSharp2SQLlibrary {
 
         public static Connection _Connection { get; set; }
 
+        public static bool Update(Users user) {
+            var sql = " UPDATE [User] set" +
+               " Username = @Username," +
+               " Password = @Password," +
+               " FirstName = @FirstName," +
+               " LastName = @LastName," +
+               " Phone = @Phone," +
+              " Email = @Email," +
+                "IsAdmin = @IsAdmin," +
+                "IsReviewer = @IsReviewer" +
+                "Where Id = @Id";
+
+                         var sqlcmd = new SqlCommand(sql, _Connection._Connection);
+            sqlcmd.Parameters.AddWithValue("@Username", user.Username);
+            sqlcmd.Parameters.AddWithValue("@Password", user.Password);
+            sqlcmd.Parameters.AddWithValue("@FirstName", user.FirstName);
+            sqlcmd.Parameters.AddWithValue("@LastName", user.LastName);
+            sqlcmd.Parameters.AddWithValue("@Phone", user.Phone);
+            sqlcmd.Parameters.AddWithValue("@Email", user.Email);
+            sqlcmd.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
+            sqlcmd.Parameters.AddWithValue("@IsReviewer", user.IsReviewer);
+            sqlcmd.ExecuteNonQuery();
+            var rowsAffected = sqlcmd.ExecuteNonQuery();
+            return rowsAffected == 1;
+
+
+        }
+
+        public static bool Insert(Users user) {
+            var sql = " Insert into [User]" +
+                "(Username,Password, FirstName, LastName, Phone, Email, IsAdmin, IsReviewer)" +
+                "VALUES" +
+              "(@Username,@Password, @FirstName, @LastName, @Phone, @Email, @IsAdmin, @IsReviewer)";
+                
+            var sqlcmd = new SqlCommand(sql, _Connection._Connection);
+            sqlcmd.Parameters.AddWithValue("@Username", user.Username);
+            sqlcmd.Parameters.AddWithValue("@Password", user.Password);
+            sqlcmd.Parameters.AddWithValue("@FirstName", user.FirstName);
+            sqlcmd.Parameters.AddWithValue("@LastName", user.LastName);
+            sqlcmd.Parameters.AddWithValue("@Phone", user.Phone);
+            sqlcmd.Parameters.AddWithValue("@Email", user.Email);
+            sqlcmd.Parameters.AddWithValue("@IsAdmin", user.IsAdmin);
+            sqlcmd.Parameters.AddWithValue("@IsReviewer", user.IsReviewer);
+            sqlcmd.ExecuteNonQuery();
+            var rowsAffected = sqlcmd.ExecuteNonQuery();
+            return rowsAffected == 1;
+
+        }
+        public static bool Delete(int id) {
+            var sql = " Delete from [User] where Id = @Id;";
+            var sqlcmd = new SqlCommand(sql, _Connection._Connection);
+            sqlcmd.Parameters.AddWithValue("@Id", id);
+            sqlcmd.ExecuteNonQuery();
+            var rowsAffected = sqlcmd.ExecuteNonQuery();
+            return rowsAffected == 1;
+            
+        
+        }
         
         public static Users Login(String username, string password) {
 
