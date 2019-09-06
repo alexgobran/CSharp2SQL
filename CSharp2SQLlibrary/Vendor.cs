@@ -30,8 +30,8 @@ namespace CSharp2SQLlibrary {
               " Email = @Email," +
             "Where Id = @Id";
         private const string SqlInsert = "INSERT into Vendor" +
-            "Code, Name, Address, City, State, Zip, Phone, Email)" +
-            "VALUES (Code, Name, @Address, @City, @State, @Zip, @Phone, @Email)";
+            " (Code, Name, Address, City" + "State, Zip, Phone, Email) " +
+            " VALUES (Code, Name, @Address, @City, @State, @Zip, @Phone, @Email)";
 
         public static List<Vendor> GetAll() {
             var sqlcmd = new SqlCommand(SqlGetAll, Connection.sqlConnection);
@@ -39,9 +39,9 @@ namespace CSharp2SQLlibrary {
             var vendor = new List<Vendor>();
             while (reader.Read())
             {
-                var vendor = new Vendor();
-                vendor.Add(vendor);
-                LoadVendorFromSql(vendor, reader);
+                var vendors = new Vendor();
+                vendor.Add(vendors);
+                LoadVendorFromSql(vendors, reader);
             }
             reader.Close();
             return vendor;
@@ -115,7 +115,8 @@ namespace CSharp2SQLlibrary {
 
 
             return $"Id={Id}, Code={Code}, Name={Name}," +
-                $"Address={Address},City = {City},State={State}, Zip={Zip}, Phone = {Phone}, Email = {Email}";
+                $"Address={Address},City = {City}," +
+                $"State={State}, Zip={Zip}, Phone = {Phone}, Email = {Email}";
         }
 
 

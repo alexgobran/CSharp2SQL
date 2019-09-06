@@ -7,32 +7,57 @@ namespace CSharp2SQL {
 
 
     class Program {
+        public static void Main(string[] args) {
+            RunProductTest();
+
+        }
+       public static void RunProductTest() {
 
 
 
-
-        void RunVendorsTest() {
-
-           
-                       
             var conn = new Connection(@"localhost\sqlexpress", "PRS");
             conn.Open();
-            Vendor.Connection= conn;
+            Product.Connection = conn;
 
-            var vendors = Vendor.GetAll();
-            foreach(var v in vendors)
-            {
-                Console.WriteLine(v.Name);
-            }
+           
+
+            var Computer = Product.GetByPk(5);
+            Console.WriteLine(Computer);
+          
+
+            //var products = Product.GetAll();
+            //foreach (var p in products)
+            //{
+            //    Console.WriteLine(p);
+            //}
+
+            conn.Close();
+           
 
 
-            
-            var vendor = Vendor.SqlGetPK(2);
-            Debug.WriteLine(vendor);
-            var vendornf = Vendor.SqlGetPK(222);
-            var success = Vendor.SqlDelete(4);
-            var vendor3 = Vendor.SqlGetPK(3);
-            Debug.WriteLine(vendor);
+        }
+            void RunVendorsTest() {
+
+
+
+            //var conn = new Connection(@"localhost\sqlexpress", "PRS");
+            //conn.Open();
+            //Vendor.Connection= conn;
+
+            //var vendors = Vendor.GetAll();
+            //foreach(var v in vendors)
+            //{
+            //    Console.WriteLine(v.Name);
+            //}
+
+
+
+            //var vendor = Vendor.SqlGetPK(2);
+            //Debug.WriteLine(vendor);
+            //var vendornf = Vendor.SqlGetPK(222);
+            //var success = Vendor.SqlDelete(4);
+            //var vendor3 = Vendor.SqlGetPK(3);
+            //Debug.WriteLine(vendor);
 
 
 
@@ -44,16 +69,16 @@ namespace CSharp2SQL {
 
 
 
-        public static void Main(string[] args) {
+        //public static void Main(string[] args) {
 
 
 
 
-            var conn = new Connection(@"localhost\sqlexpress", "PRS");
-            conn.Open();
-            Users.sqlConnection = conn;
-            var userLogin = Users.Login("sa", "sa");
-            Console.WriteLine(userLogin);
+        //    var conn = new Connection(@"localhost\sqlexpress", "PRS");
+        //    conn.Open();
+        //    Users.sqlConnection = conn;
+        //    var userLogin = Users.Login("sa", "sa");
+        //    Console.WriteLine(userLogin);
 
             //var userFailedLogin = Users.Login("xx", "xx");
             //Console.WriteLine(userFailedLogin?.ToString()?? "not found");
@@ -89,14 +114,14 @@ namespace CSharp2SQL {
             //    conn.Close();
 
 
-            var pgm = new Program();
-            pgm.Run();
+        //    var pgm = new Program();
+        //    pgm.Run();
 
-        }
+        //}
 
-        public void Run() {
+        //public void Run() {
             
-        }
+        //}
 
 
 
