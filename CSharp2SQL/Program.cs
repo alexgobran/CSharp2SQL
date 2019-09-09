@@ -11,32 +11,67 @@ namespace CSharp2SQL {
             RunProductTest();
 
         }
-       public static void RunProductTest() {
+        public static void RunProductTest() {
 
 
 
             var conn = new Connection(@"localhost\sqlexpress", "PRS");
             conn.Open();
+
             Product.Connection = conn;
+            Vendor.Connection = conn;
+            //you can choose to initialize with any of the properties with creating multiple constructors
+            var product = new Product()
+            { PartNbr = "XYZ001", Name = "XYZPART", Price = 10, Unit = "Each", PhotoPath = null, VendorId = 2
 
-           
+            };
+            // use try/ catch to handle exception error with program crashing
+            try
+            {
+                //Insert
+                var success = Product.Insert(product);
+                //update product.id = 5
+                var p = Product.GetByPk(5);
+                p.Name = "Wild One";
+                p.VendorId = Vendor.SqlGetbyCode("XXX").Id;
+                success = Product.Update(p);
 
-            var Computer = Product.GetByPk(5);
-            Console.WriteLine(Computer);
-          
-
-            //var products = Product.GetAll();
-            //foreach (var p in products)
-            //{
-            //    Console.WriteLine(p);
-            //}
-
-            conn.Close();
-           
+                var p = Product.GetByPartNbr("XYZ001");
+                Console.WriteLine(p);
+                success = Product.Delete(p.Id);
+            } catch(Exception ex)
+            {
+                Console.WriteLine($"Exception occurred; {ex.Message}");
+            }
 
 
-        }
-            void RunVendorsTest() {
+                // //delete
+
+
+
+
+
+
+
+
+
+
+                //var Computer = Product.GetByPk(5);
+                //Console.WriteLine(Computer);
+
+
+                //var products = Product.GetAll();
+                //foreach (var p in products)
+                //{
+                //    Console.WriteLine(p);
+                //}
+
+                //conn.Close();
+
+
+
+            }
+           // void RunVendorsTest() {
 
 
 
@@ -65,7 +100,7 @@ namespace CSharp2SQL {
             //vendordell.Name = "";
             //vendordell.Name = "King";
             //    success = Users.Update(userabc);
-        }
+        
 
 
 

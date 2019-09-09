@@ -15,6 +15,8 @@ namespace CSharp2SQLlibrary {
 
         private const string SqlGetByPk = SqlGetAll + "where Id = @Id";
 
+        private const string SqlGetByCode = SqlGetAll + " Where Code =  @Code";
+
         private const string SqlDelete = "Delete From Vendor where Id = @Id";
 
         private const string SqlUpdate = " Update Vendor Set" +
@@ -59,7 +61,26 @@ namespace CSharp2SQLlibrary {
 
         }
 
-        public static Vendor SqlGetPK (int Id) {
+        #region GetByPartNbr
+        public static Vendor SqlGetbyCode(string partNbr) {
+            var sqlcmd = new SqlCommand(SqlGetbyCode, Connection.sqlConnection);
+            sqlcmd.Parameters.AddWithValue("@Code", code);
+            var reader = sqlcmd.ExecuteReader();
+
+            if (!reader.HasRows)
+            {
+                reader.Close();
+                return null;
+            }
+            reader.Read();
+            var vendor = new Vendor();
+            LoadVendorFromSql(vendor, reader);
+
+            reader.Close();
+            return vendor;
+            #endregion
+
+            public static Vendor SqlGetPK (int Id) {
             var sql = "SELECT * from [Vendor] Where Id = @Id";
             var sqlcmd = new SqlCommand(sql, Connection.sqlConnection);
             sqlcmd.Parameters.AddWithValue("@Id",Id);
@@ -80,10 +101,10 @@ namespace CSharp2SQLlibrary {
 
             return vendor;
         }
-         
 
 
-           static void LoadVendorFromSql(Vendor vendor, SqlDataReader reader) {
+
+            static void LoadVendorFromSql(Vendor vendor, SqlDataReader reader) {
                 vendor.Id = (int)reader["Id"];
                 vendor.Code = reader["Code"].ToString();
                 vendor.Address = reader["Address"].ToString();
@@ -96,7 +117,7 @@ namespace CSharp2SQLlibrary {
 
 
         //Properties
-         public int Id { get; private set; }  
+        public int Id { get; private set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
