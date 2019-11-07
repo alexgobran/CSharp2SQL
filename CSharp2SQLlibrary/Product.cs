@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 namespace CSharp2SQLlibrary {
     public class Product {
 
-        public static Connection Connection { get; set; }
+        public static Connection Connection { get; set; }   
 
         #region SQL statements
         private const string SqlGetAll = "SELECT * from Product";
@@ -24,6 +24,7 @@ namespace CSharp2SQLlibrary {
         #endregion
 
 
+        var product = new Product();
         public static Product GetByPartNbr(string partNbr) {
             var sqlcmd = new SqlCommand(SqlGetByPartNbr, Connection.sqlConnection);
            sqlcmd.Parameters.AddWithValue("@PartNbr", partNbr);
@@ -35,14 +36,14 @@ namespace CSharp2SQLlibrary {
                 return null;
             }
             reader.Read();
-            var product = new Product();
+            
             LoadProductFromSql(product, reader);
 
             reader.Close();
             return product;
 
 
-            public static Product SqlGet(string partNbr) {
+           static Product SqlGet(string partNbr) {
                 var sqlcmd = new SqlCommand(SqlGetProdByVen, Connection.sqlConnection);
                 sqlcmd.Parameters.AddWithValue("@PartNbr", partNbr);
                 var reader = sqlcmd.ExecuteReader();

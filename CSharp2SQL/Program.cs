@@ -1,6 +1,9 @@
 ﻿using System;
 using CSharp2SQLlibrary;        
 using System.Diagnostics;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+
 
 
 namespace CSharp2SQL {
